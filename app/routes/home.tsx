@@ -1,7 +1,10 @@
 import ResumeCard from "~/components/ResumeCard";
 import { resumes } from "../../constants";
 import type { Route } from "./+types/home";
-
+import Navbar from "~/components/Navbar";
+import { usePuterStore } from "../lib/puter";
+import { Link, useNavigate } from "react-router";
+import {useEffect, useState} from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,11 +12,18 @@ export function meta({}: Route.MetaArgs) {
     { name: "description", content: "Smart Feedback for your dream job" },
   ];
 }
-import Navbar from "~/components/Navbar";
+
 
 
 
 export default function Home() {
+
+    const {auth, kv} = usePuterStore();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if(!auth.isAuthenticated) navigate('/auth?next=/');}, [auth.isAuthenticated])
+
   return <main className="bg-[url('public/images/bg-main.svg')] bg-cover">
     <Navbar />
     
