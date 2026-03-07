@@ -4,32 +4,49 @@ export interface PdfConversionResult {
     error?: string;
 }
 
+// let pdfjsLib: any = null;
+// let isLoading = false;
+// let loadPromise: Promise<any> | null = null;
+
+// async function loadPdfJs(): Promise<any> {
+//     if (pdfjsLib) return pdfjsLib;
+//     if (loadPromise) return loadPromise;
+
+//     isLoading = true;
+//     // @ts-expect-error - pdfjs-dist/build/pdf.mjs is not a module
+//     loadPromise = import("pdfjs-dist/build/pdf.mjs").then((lib) => {
+//         // Set the worker source to use local file
+//         lib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+//         pdfjsLib = lib;
+//         isLoading = false;
+//         return lib;
+//     });
+
+//     return loadPromise;
+// }
+
 let pdfjsLib: any = null;
-let isLoading = false;
-let loadPromise: Promise<any> | null = null;
 
-async function loadPdfJs(): Promise<any> {
-    if (pdfjsLib) return pdfjsLib;
-    if (loadPromise) return loadPromise;
+async function loadPdf() {
+  if (!pdfjsLib) {
+    const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
 
-    isLoading = true;
-    // @ts-expect-error - pdfjs-dist/build/pdf.mjs is not a module
-    loadPromise = import("pdfjs-dist/build/pdf.mjs").then((lib) => {
-        // Set the worker source to use local file
-        lib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
-        pdfjsLib = lib;
-        isLoading = false;
-        return lib;
-    });
+    pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+      "pdfjs-dist/legacy/build/pdf.worker.mjs",
+      import.meta.url
+    ).toString();
 
-    return loadPromise;
+    pdfjsLib = pdfjs;
+  }
+
+  return pdfjsLib;
 }
 
 export async function convertPdfToImage(
     file: File
 ): Promise<PdfConversionResult> {
     try {
-        const lib = await loadPdfJs();
+        const lib = await loadPdf();
 
         const arrayBuffer = await file.arrayBuffer();
         const pdf = await lib.getDocument({ data: arrayBuffer }).promise;
