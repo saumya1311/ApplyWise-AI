@@ -12,16 +12,6 @@ An AI-powered Resume Analyzer that evaluates resumes and provides ATS scores, fe
 This project uses AI analysis + PDF parsing + modern frontend technologies to provide an intelligent resume evaluation system.
 
 
-# 🌐 Live Demo
-
-
-## 📸 Screenshots
-### Resume Upload
-
-### Resume Analysis Dashboard
-
-### AI Feedback
-
 # ✨ Features
 
 ✅ Upload resume in PDF format
