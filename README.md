@@ -14,7 +14,6 @@ This project uses AI analysis + PDF parsing + modern frontend technologies to pr
 
 # 🌐 Live Demo
 
-👉  https://your-live-demo-link.com
 
 ## 📸 Screenshots
 ### Resume Upload
