@@ -16,16 +16,15 @@ export default function Home() {
       <Navbar />
 
       <section className="main-section px-4 sm:px-10">
-        <div className="page-heading py-20">
+        <div className="page-heading py-10">
           <h1 className="text-4xl sm:text-6xl font-extrabold text-[#33334d] mb-4">
-            Track Your Applications & Resume Ratings
+            <span className="block animate-reveal delay-100">Resume Check.</span>
+            <span className="block animate-reveal delay-300">Application Track.</span>
+            <span className="block animate-reveal delay-500 font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">Stress Less.</span>
           </h1>
-          <h2 className="text-lg sm:text-xl text-gray-500 font-medium tracking-tight">
-            Review your submissions and check AI-powered feedback.
-          </h2>
         </div>
 
-        <div className="resumes-section mt-8">
+        <div className="resumes-section mt-8 animate-reveal delay-500">
           {resumes.map((resume) => (
             <ResumeCard key={resume.id} resume={resume} />
           ))}
