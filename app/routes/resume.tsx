@@ -8,7 +8,7 @@ import Details from "~/components/Details";
 import Footer from "~/components/Footer";
 
 export const meta = () => ([
-    { title: 'ApplyWise | Review ' },
+    { title: 'ApplyWise AI | Review ' },
     { name: 'description', content: 'Detailed overview of your resume' },
 ])
 
@@ -53,12 +53,12 @@ const resume = () => {
     }, [id]);
 
     return (
-        <main className="!pt-0 flex flex-col min-h-screen">
+        <main className="bg-[#d9ecfe] !pt-0 flex flex-col min-h-screen">
             <Navbar />
             <div className="flex flex-row w-full max-lg:flex-col-reverse flex-grow">
-                <section className="feedback-section bg-[#d9ecfe] h-[100vh] sticky top-0 items-center justify-center">
+                <section className="feedback-section h-[100vh] sticky top-0 items-center justify-center !pt-4">
                     {imageUrl && resumeUrl && (
-                        <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit">
+                        <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-full max-w-xl">
                             <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
                                 <img
                                     src={imageUrl}
@@ -69,10 +69,10 @@ const resume = () => {
                         </div>
                     )}
                 </section>
-                <section className="feedback-section">
-                    <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
+                <section className="feedback-section max-h-screen overflow-y-auto">
+                    <h2 className="text-3xl !font-extrabold tracking-tight text-[black] dark:text-white" style={{ fontWeight: 800, fontSize: '2rem' }}>Resume Review</h2>
                     {feedback ? (
-                        <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
+                        <div className="flex flex-col gap-4 animate-in fade-in duration-1000">
                             <Summary feedback={feedback} />
                             <ATS
                                 score={feedback.ATS?.score || 0}

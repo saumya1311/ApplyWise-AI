@@ -95,8 +95,8 @@ export const resumes: Resume[] = [
     id: "4",
     companyName: "American Express",
     jobTitle: "Software Developer",
-    imagePath: "/images/resume_01.png",
-    resumePath: "/resumes/resume-1.pdf",
+    imagePath: "/images/resume_04.png",
+    resumePath: "/resumes/resume-4.pdf",
     feedback: {
       overallScore: 85,
       ATS: {
@@ -125,8 +125,8 @@ export const resumes: Resume[] = [
     id: "5",
     companyName: "Netflix",
     jobTitle: "Backend Developer",
-    imagePath: "/images/resume_01.png",
-    resumePath: "/resumes/resume-1.pdf",
+    imagePath: "/images/resume_05.png",
+    resumePath: "/resumes/resume-5.pdf",
     feedback: {
       overallScore: 85,
       ATS: {
@@ -155,8 +155,8 @@ export const resumes: Resume[] = [
     id: "6",
     companyName: "Meta",
     jobTitle: "Product Manager",
-    imagePath: "/images/resume_01.png",
-    resumePath: "/resumes/resume-1.pdf",
+    imagePath: "/images/resume_06.png",
+    resumePath: "/resumes/resume-6.pdf",
     feedback: {
       overallScore: 85,
       ATS: {

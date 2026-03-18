@@ -2,6 +2,7 @@ import { type FormEvent, useState, useEffect } from 'react'
 import Navbar from "~/components/Navbar";
 import FileUploader from "~/components/FileUploader";
 import Footer from "~/components/Footer";
+import { Link } from 'react-router';
 
 import { supabase } from "~/lib/supabase";
 import { useNavigate } from "react-router";
@@ -111,44 +112,58 @@ const Upload = () => {
     }
 
     return (
-        <main className="bg-[url('/images/bg-main.png')] bg-cover min-h-screen flex flex-col">
+        <main className="bg-[#d9ecfe] min-h-screen pt-0">
             <Navbar />
 
-            <section className="main-section flex-grow">
-                <div className="page-heading py-16">
-                    <h1>Smart feedback for your dream job</h1>
-                    {isProcessing ? (
-                        <>
-                            <h2>{statusText}</h2>
-                            <img src="/images/resume-scan.gif" className="w-full" />
-                        </>
-                    ) : (
-                        <h2>Drop your resume for an ATS score and improvement tips</h2>
+            <section className="main-section px-2 sm:px-10">
+                <div className="page-heading  max-w-4xl mx-auto">
+                    <h1 className="text-4xl sm:text-6xl font-extrabold text-[#33334d] dark:text-white mb-2">
+                        Smart feedback for your <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#a5b4fc] to-[#60a5fa] dark:from-[#818cf8] dark:to-[#22d3ee]">dream job</span>
+                    </h1>
+                    {isProcessing && (
+                        <div className="flex flex-col items-center gap-6">
+                            <h2 className="text-xl text-gray-500 dark:text-gray-400 font-medium">{statusText}</h2>
+                            <div className="w-full max-w-md overflow-hidden rounded-2xl shadow-lg">
+                                <img src="/images/resume-scan.gif" className="w-full h-auto" alt="Processing..." />
+                            </div>
+                        </div>
                     )}
+
                     {!isProcessing && (
-                        <form id="upload-form" onSubmit={handleSubmit} className="flex flex-col gap-4 mt-8">
-                            <div className="form-div">
-                                <label htmlFor="company-name">Company Name</label>
-                                <input type="text" name="company-name" placeholder="Company Name" id="company-name" />
-                            </div>
-                            <div className="form-div">
-                                <label htmlFor="job-title">Job Title</label>
-                                <input type="text" name="job-title" placeholder="Job Title" id="job-title" />
-                            </div>
-                            <div className="form-div">
-                                <label htmlFor="job-description">Job Description</label>
-                                <textarea rows={5} name="job-description" placeholder="Job Description" id="job-description" />
-                            </div>
+                        <div className="w-full max-w-2xl mx-auto bg-white dark:bg-white p-8 rounded-[32px] border border-gray-100 dark:border-gray-800 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-black">
+                            <Link to="/" className="flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-600 transition-colors self-start uppercase tracking-wider mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                                </svg>
+                                Back to Home
+                            </Link>
+                            <form id="upload-form" onSubmit={handleSubmit} className="flex flex-col gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    <div className="form-div">
+                                        <label htmlFor="company-name" className="text-sm font-bold mb-2">Company Name</label>
+                                        <input type="text" name="company-name" placeholder="e.g. Google" id="company-name" className="w-full" />
+                                    </div>
+                                    <div className="form-div">
+                                        <label htmlFor="job-title" className="text-sm font-bold mb-2">Job Title</label>
+                                        <input type="text" name="job-title" placeholder="e.g. Frontend Engineer" id="job-title" className="w-full" />
+                                    </div>
+                                </div>
 
-                            <div className="form-div">
-                                <label htmlFor="uploader">Upload Resume</label>
-                                <FileUploader onFileSelect={handleFileSelect} />
-                            </div>
+                                <div className="form-div text-left">
+                                    <label htmlFor="job-description" className="text-sm font-bold mb-2">Job Description</label>
+                                    <textarea rows={2} name="job-description" placeholder="Paste the job requirements here..." id="job-description" className="w-full" />
+                                </div>
 
-                            <button className="primary-button" type="submit">
-                                Analyze Resume
-                            </button>
-                        </form>
+                                <div className="form-div text-left">
+                                    <label htmlFor="uploader" className="text-sm font-bold mb-2">Upload Resume (PDF)</label>
+                                    <FileUploader onFileSelect={handleFileSelect} />
+                                </div>
+
+                                <button className="primary-button text-lg font-bold py-4 shadow-lg hover:shadow-indigo-200/50 dark:hover:shadow-indigo-900/20 transition-all duration-300" type="submit">
+                                    Analyze Resume
+                                </button>
+                            </form>
+                        </div>
                     )}
                 </div>
             </section>

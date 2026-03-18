@@ -48,7 +48,7 @@ const Navbar = () => {
     <nav className="navbar relative">
       {/* Logo */}
       <Link to="/">
-        <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#a5b4fc] to-[#606beb]">ApplyWise</p>
+        <p className="text-2xl font-black bg-clip-text bg-gradient-to-r from-[#a5b4fc] to-[#606beb]" style={{ color: 'transparent', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>ApplyWise AI</p>
       </Link>
 
       {/* Right side actions */}
@@ -124,4 +124,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

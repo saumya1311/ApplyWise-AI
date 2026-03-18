@@ -7,7 +7,7 @@ import { resumes } from "~/../constants";
 
 export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "ApplyWise" },
+    { title: "ApplyWise AI" },
     { name: "description", content: "Smart feedback for your dream job!" },
   ];
 }
@@ -71,19 +71,19 @@ export default function Home() {
       <section className="main-section px-4 sm:px-10">
         <div className="page-heading py-10">
           <h1 className="text-4xl sm:text-6xl font-extrabold text-[#33334d] mb-4">
-            <Typewriter 
+            <Typewriter
               lines={[
                 { text: "Resume Check." },
-                { 
-                  text: "Stress Less.", 
-                  className: "font-black text-transparent bg-clip-text bg-gradient-to-r from-[#a5b4fc] to-[#606beb]" 
+                {
+                  text: "Stress Less.",
+                  className: "inline-block font-black text-transparent bg-clip-text bg-gradient-to-r from-[#a5b4fc] to-[#606beb] dark:from-[#818cf8] dark:to-[#22d3ee]"
                 }
               ]}
             />
           </h1>
         </div>
 
-        <div className="resumes-section mt-8 animate-reveal delay-500">
+        <div className="resumes-section mt-0 animate-reveal delay-500">
           {resumes.map((resume) => (
             <ResumeCard key={resume.id} resume={resume} />
           ))}

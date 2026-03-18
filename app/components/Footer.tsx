@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="footer mt-12 mb-0">
       <div className="max-w-[1800px] mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#a5b4fc] to-[#606beb]">
-          ApplyWise
+          ApplyWise AI
         </div>
 
         <div className="flex gap-6 text-gray-400 dark:text-gray-500 text-sm font-medium">
@@ -13,7 +13,7 @@ export default function Footer() {
         </div>
 
         <div className="text-gray-400 dark:text-gray-500 text-xs font-medium">
-          © {new Date().getFullYear()} ApplyWise. All rights reserved.
+          © {new Date().getFullYear()} ApplyWise AI. All rights reserved.
         </div>
       </div>
     </footer>
